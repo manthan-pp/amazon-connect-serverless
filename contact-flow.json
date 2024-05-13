@@ -1,0 +1,374 @@
+{
+	"Version": "2019-10-30",
+	"StartAction": "16e37570-90a3-4ec5-8bd7-d0a0fba54105",
+	"Metadata": {
+		"entryPointPosition": {
+			"x": 40,
+			"y": 40
+		},
+		"ActionMetadata": {
+			"16e37570-90a3-4ec5-8bd7-d0a0fba54105": {
+				"position": {
+					"x": 117.6,
+					"y": -228.8
+				}
+			},
+			"81bcba32-66fd-483e-bcf4-9ab026ef9f39": {
+				"position": {
+					"x": 381.6,
+					"y": -245.6
+				},
+				"conditions": [],
+				"conditionMetadata": [
+					{
+						"id": "605bc86f-e1fd-41e0-8e1a-90117c62e1e1",
+						"operator": {
+							"name": "Contains",
+							"value": "Contains",
+							"shortDisplay": "contains"
+						},
+						"value": "BelPromo"
+					}
+				]
+			},
+			"c302166a-f765-46a1-b299-2e4fad6ce26b": {
+				"position": {
+					"x": 661.6,
+					"y": -157.6
+				},
+				"conditions": [],
+				"conditionMetadata": [
+					{
+						"id": "cec965d6-6c08-4262-bcee-27b51c3764e5",
+						"operator": {
+							"name": "Contains",
+							"value": "Contains",
+							"shortDisplay": "contains"
+						},
+						"value": "SALES"
+					}
+				]
+			},
+			"7e32d332-1644-45e7-8823-bc7517e7754c": {
+				"position": {
+					"x": 538.4,
+					"y": -717.6
+				}
+			},
+			"8b16e780-f1fa-4f98-968c-1f691add5695": {
+				"position": {
+					"x": 1172,
+					"y": -173.6
+				}
+			},
+			"4d0c7b2c-a4d4-4f33-926e-dea54227a942": {
+				"position": {
+					"x": 945.6,
+					"y": 504.8
+				}
+			},
+			"af9bf216-081c-4129-a057-ec0f0ad3b2d6": {
+				"position": {
+					"x": 1131.2,
+					"y": -474.4
+				},
+				"parameters": {
+					"HoursOfOperationId": {
+						"displayName": "BusinessHours"
+					}
+				},
+				"Hours": {
+					"id": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/f4ee7f5f-36f0-41ed-958e-9ed5fc994ba9",
+					"text": "BusinessHours"
+				}
+			},
+			"83620ad8-ccf6-4180-8670-096a195a9531": {
+				"position": {
+					"x": 2962.4,
+					"y": -544.8
+				}
+			},
+			"75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b": {
+				"position": {
+					"x": 3785.6,
+					"y": -401.6
+				}
+			},
+			"a83fded9-68f3-473c-9445-b05282ccbaae": {
+				"position": {
+					"x": 896.8,
+					"y": 153.6
+				},
+				"parameters": {
+					"HoursOfOperationId": {
+						"displayName": "BusinessHours"
+					}
+				},
+				"Hours": {
+					"id": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/f4ee7f5f-36f0-41ed-958e-9ed5fc994ba9",
+					"text": "BusinessHours"
+				}
+			},
+			"e689eb14-57c4-4bef-9e33-946a01531ddf": {
+				"position": {
+					"x": 3019.2,
+					"y": 299.2
+				}
+			}
+		},
+		"Annotations": [],
+		"name": "abg_Serverless_test_belusa_chatflow",
+		"description": "Simple flow using Serverless",
+		"type": "contactFlow",
+		"status": "published",
+		"hash": {}
+	},
+	"Actions": [
+		{
+			"Parameters": {
+				"RecordingBehavior": {
+					"RecordedParticipants": [
+						"Agent",
+						"Customer"
+					],
+					"ScreenRecordedParticipants": [
+						"Agent"
+					]
+				},
+				"AnalyticsBehavior": {
+					"Enabled": "True",
+					"AnalyticsLanguage": "en-US",
+					"AnalyticsRedactionBehavior": "Disabled",
+					"AnalyticsRedactionResults": "RedactedAndOriginal",
+					"ChannelConfiguration": {
+						"Chat": {
+							"AnalyticsModes": [
+								"ContactLens"
+							]
+						},
+						"Voice": {
+							"AnalyticsModes": []
+						}
+					}
+				}
+			},
+			"Identifier": "16e37570-90a3-4ec5-8bd7-d0a0fba54105",
+			"Type": "UpdateContactRecordingBehavior",
+			"Transitions": {
+				"NextAction": "81bcba32-66fd-483e-bcf4-9ab026ef9f39"
+			}
+		},
+		{
+			"Parameters": {
+				"ComparisonValue": "$.Attributes.INSTANCE_NAME"
+			},
+			"Identifier": "81bcba32-66fd-483e-bcf4-9ab026ef9f39",
+			"Type": "Compare",
+			"Transitions": {
+				"NextAction": "c302166a-f765-46a1-b299-2e4fad6ce26b",
+				"Conditions": [
+					{
+						"NextAction": "7e32d332-1644-45e7-8823-bc7517e7754c",
+						"Condition": {
+							"Operator": "TextContains",
+							"Operands": [
+								"BelPromo"
+							]
+						}
+					}
+				],
+				"Errors": [
+					{
+						"NextAction": "c302166a-f765-46a1-b299-2e4fad6ce26b",
+						"ErrorType": "NoMatchingCondition"
+					}
+				]
+			}
+		},
+		{
+			"Parameters": {
+				"ComparisonValue": "$.Attributes.SERVICE_NAME"
+			},
+			"Identifier": "c302166a-f765-46a1-b299-2e4fad6ce26b",
+			"Type": "Compare",
+			"Transitions": {
+				"NextAction": "a83fded9-68f3-473c-9445-b05282ccbaae",
+				"Conditions": [
+					{
+						"NextAction": "af9bf216-081c-4129-a057-ec0f0ad3b2d6",
+						"Condition": {
+							"Operator": "TextContains",
+							"Operands": [
+								"SALES"
+							]
+						}
+					}
+				],
+				"Errors": [
+					{
+						"NextAction": "a83fded9-68f3-473c-9445-b05282ccbaae",
+						"ErrorType": "NoMatchingCondition"
+					}
+				]
+			}
+		},
+		{
+			"Parameters": {
+				"Text": "Error"
+			},
+			"Identifier": "7e32d332-1644-45e7-8823-bc7517e7754c",
+			"Type": "MessageParticipant",
+			"Transitions": {
+				"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+				"Errors": [
+					{
+						"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+						"ErrorType": "NoMatchingError"
+					}
+				]
+			}
+		},
+		{
+			"Parameters": {
+				"Text": "You have reached us outside our business hours. \n\nOur services are available\nMonday-Friday from 8:00 am TO 12:00 am EST\n\nSaturday & Sunday from 9:00 am TO 10:00 pm EST\n\nFor urgent support please contact us at: https://support.discountmugs.com/"
+			},
+			"Identifier": "8b16e780-f1fa-4f98-968c-1f691add5695",
+			"Type": "MessageParticipant",
+			"Transitions": {
+				"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+				"Errors": [
+					{
+						"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+						"ErrorType": "NoMatchingError"
+					}
+				]
+			}
+		},
+		{
+			"Parameters": {
+				"Text": "You have reached us outside our business hours. \n\nOur services are available\nMonday-Friday from 8:00 am TO 10:00 pm EST\n\nSaturday & Sunday from 10:00 am TO 7:00 pm EST\n\nFor urgent support please contact us at: https://support.discountmugs.com/support/tickets/new"
+			},
+			"Identifier": "4d0c7b2c-a4d4-4f33-926e-dea54227a942",
+			"Type": "MessageParticipant",
+			"Transitions": {
+				"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+				"Errors": [
+					{
+						"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+						"ErrorType": "NoMatchingError"
+					}
+				]
+			}
+		},
+		{
+			"Parameters": {
+				"HoursOfOperationId": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/f4ee7f5f-36f0-41ed-958e-9ed5fc994ba9"
+			},
+			"Identifier": "af9bf216-081c-4129-a057-ec0f0ad3b2d6",
+			"Type": "CheckHoursOfOperation",
+			"Transitions": {
+				"NextAction": "8b16e780-f1fa-4f98-968c-1f691add5695",
+				"Conditions": [
+					{
+						"NextAction": "83620ad8-ccf6-4180-8670-096a195a9531",
+						"Condition": {
+							"Operator": "Equals",
+							"Operands": [
+								"True"
+							]
+						}
+					},
+					{
+						"NextAction": "8b16e780-f1fa-4f98-968c-1f691add5695",
+						"Condition": {
+							"Operator": "Equals",
+							"Operands": [
+								"False"
+							]
+						}
+					}
+				],
+				"Errors": [
+					{
+						"NextAction": "8b16e780-f1fa-4f98-968c-1f691add5695",
+						"ErrorType": "NoMatchingError"
+					}
+				]
+			}
+		},
+		{
+			"Parameters": {
+				"Text": "Thank you for your patience. A sales team member will join you shortly."
+			},
+			"Identifier": "83620ad8-ccf6-4180-8670-096a195a9531",
+			"Type": "MessageParticipant",
+			"Transitions": {
+				"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+				"Errors": [
+					{
+						"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+						"ErrorType": "NoMatchingError"
+					}
+				]
+			}
+		},
+		{
+			"Parameters": {},
+			"Identifier": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+			"Type": "DisconnectParticipant",
+			"Transitions": {}
+		},
+		{
+			"Parameters": {
+				"HoursOfOperationId": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/f4ee7f5f-36f0-41ed-958e-9ed5fc994ba9"
+			},
+			"Identifier": "a83fded9-68f3-473c-9445-b05282ccbaae",
+			"Type": "CheckHoursOfOperation",
+			"Transitions": {
+				"NextAction": "4d0c7b2c-a4d4-4f33-926e-dea54227a942",
+				"Conditions": [
+					{
+						"NextAction": "e689eb14-57c4-4bef-9e33-946a01531ddf",
+						"Condition": {
+							"Operator": "Equals",
+							"Operands": [
+								"True"
+							]
+						}
+					},
+					{
+						"NextAction": "4d0c7b2c-a4d4-4f33-926e-dea54227a942",
+						"Condition": {
+							"Operator": "Equals",
+							"Operands": [
+								"False"
+							]
+						}
+					}
+				],
+				"Errors": [
+					{
+						"NextAction": "4d0c7b2c-a4d4-4f33-926e-dea54227a942",
+						"ErrorType": "NoMatchingError"
+					}
+				]
+			}
+		},
+		{
+			"Parameters": {
+				"Text": "Thank you for your patience. A customer service team member will join you shortly."
+			},
+			"Identifier": "e689eb14-57c4-4bef-9e33-946a01531ddf",
+			"Type": "MessageParticipant",
+			"Transitions": {
+				"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+				"Errors": [
+					{
+						"NextAction": "75ec1a9d-4c97-4891-99d1-b95d7c2dbe0b",
+						"ErrorType": "NoMatchingError"
+					}
+				]
+			}
+		}
+	]
+}
