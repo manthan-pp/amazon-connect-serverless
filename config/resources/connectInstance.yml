@@ -1,0 +1,6 @@
+Resources:
+  rConnectInstance:
+    Type: "AWS::Connect::Instance"
+    Properties:
+      IdentityManagementType: "CONNECT_MANAGED"
+      InstanceAlias: "MyConnectInstance"

@@ -1,0 +1,9 @@
+chat-idle-participant:
+  handler: index.handler
+  runtime: nodejs18.x
+  memorySize: 128
+  timeout: 10
+  environment:
+    disconnect_time: ${file(config/env/${self:provider.stage}.yml):environmentVariables.disconnect_time}
+    idle_time: ${file(config/env/${self:provider.stage}.yml):environmentVariables.idle_time}
+    instance_id: ${file(config/env/${self:provider.stage}.yml):environmentVariables.instance_id}

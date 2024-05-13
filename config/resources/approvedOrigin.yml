@@ -1,0 +1,11 @@
+Resources:
+  rApprovedOrigin:
+    Type: "AWS::Connect::InstanceStorageConfig"
+    Properties:
+      InstanceArn: !GetAtt rConnectInstance.Arn
+      StorageType: "CHAT_TRANSCRIPTS"
+      StorageConfig:
+        StorageType: "S3"
+        S3Config:
+          BucketName: "my-connect-transcripts"
+          BucketPrefix: "transcripts/"

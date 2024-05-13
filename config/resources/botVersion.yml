@@ -1,0 +1,10 @@
+Resources:
+  rAWSBotVersion:
+    Type: AWS::Lex::BotVersion
+    Properties:
+      BotId: !Ref rAWSLexBot
+      BotVersionLocaleSpecification:
+        - LocaleId: en_US
+          BotVersionLocaleDetails:
+            SourceBotVersion: DRAFT
+      Description: BOT Version

@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-connect": "^3.572.0"
+  },
+  "devDependencies": {
+    "serverless-plugin-resource-tagging": "^1.2.0"
+  }
+}

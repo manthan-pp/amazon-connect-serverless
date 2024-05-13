@@ -1,0 +1,19 @@
+Resources:
+  rRoutingProfile:
+    Type: "AWS::Connect::RoutingProfile"
+    Properties:
+      InstanceArn: arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a
+      Name: "Basic Serverless Routing"
+      Description: "Basic Routing Profile"
+      DefaultOutboundQueueArn: !Ref rQueue
+      MediaConcurrencies:
+        - Channel: VOICE
+          Concurrency: 1
+        - Channel: CHAT
+          Concurrency: 2
+      QueueConfigs:
+        - Delay: 0
+          Priority: 1
+          QueueReference:
+            Channel: VOICE
+            QueueArn: !Ref rQueue
