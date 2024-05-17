@@ -1087,7 +1087,7 @@
 			"Parameters": {
 				"Text": "Welcome to $.Attributes.INSTANCE_DISPLAY_VALUE chat bot.",
 				"LexV2Bot": {
-					"AliasArn": "arn:aws:lex:us-east-1:767252029631:bot-alias/UCGRJIW8OS/TSTALIASID"
+					"AliasArn": "arn:aws:lex:${AWS::Region}:${AWS::AccountId}:bot-alias/${rAWSLexBot}/${param:pLexbotalias}"
 				},
 				"LexSessionAttributes": {
 					"session_customer_email": "$.Attributes.CUSTOM_CUSTOMER_EMAIL"
@@ -1179,7 +1179,7 @@
 		},
 		{
 			"Parameters": {
-				"LambdaFunctionARN": "arn:aws:lambda:us-east-1:767252029631:function:aws-lambda-dev-lambdaFun",
+				"LambdaFunctionARN": "arn:aws:lambda::${AWS::Region}:${AWS::AccountId}:function:${param:pLambdaFunction}",
 				"InvocationTimeLimitSeconds": "8",
 				"LambdaInvocationAttributes": {
 					"contactId": "$.ContactId"
