@@ -17,3 +17,8 @@ Resources:
           QueueReference:
             Channel: VOICE
             QueueArn: !Ref rQueue
+        - Delay: 0
+          Priority: 1
+          QueueReference:
+            Channel: CHAT
+            QueueArn: !Ref rQueue

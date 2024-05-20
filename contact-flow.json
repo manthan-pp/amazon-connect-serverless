@@ -260,7 +260,7 @@
 					}
 				},
 				"Hours": {
-					"id": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/99fea1d4-b787-40b6-9045-7e55e21049fd",
+					"id": "${rHoursOfOperation}",
 					"text": "ServerlessHour"
 				}
 			},
@@ -275,7 +275,7 @@
 					}
 				},
 				"Hours": {
-					"id": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/99fea1d4-b787-40b6-9045-7e55e21049fd",
+					"id": "${rHoursOfOperation}",
 					"text": "ServerlessHour"
 				}
 			},
@@ -953,7 +953,7 @@
 		},
 		{
 			"Parameters": {
-				"HoursOfOperationId": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/99fea1d4-b787-40b6-9045-7e55e21049fd"
+				"HoursOfOperationId": "${rHoursOfOperation}"
 			},
 			"Identifier": "af9bf216-081c-4129-a057-ec0f0ad3b2d6",
 			"Type": "CheckHoursOfOperation",
@@ -989,7 +989,7 @@
 		},
 		{
 			"Parameters": {
-				"HoursOfOperationId": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/99fea1d4-b787-40b6-9045-7e55e21049fd"
+				"HoursOfOperationId": "${rHoursOfOperation}"
 			},
 			"Identifier": "a83fded9-68f3-473c-9445-b05282ccbaae",
 			"Type": "CheckHoursOfOperation",
@@ -1087,7 +1087,7 @@
 			"Parameters": {
 				"Text": "Welcome to $.Attributes.INSTANCE_DISPLAY_VALUE chat bot.",
 				"LexV2Bot": {
-					"AliasArn": "arn:aws:lex:us-east-1:767252029631:bot-alias/UCGRJIW8OS/TSTALIASID"
+					"AliasArn": "arn:aws:lex:${AWS::Region}:${AWS::AccountId}:bot-alias/${rAWSLexBot}/${param:pLexbotalias}"
 				},
 				"LexSessionAttributes": {
 					"session_customer_email": "$.Attributes.CUSTOM_CUSTOMER_EMAIL"
@@ -1131,7 +1131,7 @@
 		},
 		{
 			"Parameters": {
-				"QueueId": "$.Queue.ARN"
+				"QueueId": "${rQueue}"
 			},
 			"Identifier": "31b81fa0-1cfb-4968-af29-c5d41e37274e",
 			"Type": "UpdateContactTargetQueue",
@@ -1147,7 +1147,7 @@
 		},
 		{
 			"Parameters": {
-				"QueueId": "$.Queue.ARN"
+				"QueueId": "${rQueue}"
 			},
 			"Identifier": "3e4a3ffd-9da0-4cf7-9aff-68d5dfc38fdb",
 			"Type": "UpdateContactTargetQueue",
@@ -1179,7 +1179,7 @@
 		},
 		{
 			"Parameters": {
-				"LambdaFunctionARN": "arn:aws:lambda:us-east-1:767252029631:function:aws-lambda-dev-lambdaFun",
+				"LambdaFunctionARN": "arn:aws:lambda::${AWS::Region}:${AWS::AccountId}:function:${param:pLambdaFunction}",
 				"InvocationTimeLimitSeconds": "8",
 				"LambdaInvocationAttributes": {
 					"contactId": "$.ContactId"
