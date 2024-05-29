@@ -2,8 +2,8 @@ Resources:
   rQueue:
     Type: "AWS::Connect::Queue"
     Properties:
-      InstanceArn: arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a
+      InstanceArn: ${file(config/resources/references.yml):parameters.pConnectInstanceArn}
       HoursOfOperationArn: !Ref rHoursOfOperation
-      Name: "test Serverless Queue"
+      Name: "${file(config/resources/references.yml):parameters.pQueueName}"
       Description: "Queue for customer support"
       MaxContacts: 1

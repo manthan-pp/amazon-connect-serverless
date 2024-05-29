@@ -1,0 +1,12 @@
+# config/references.yml
+
+parameters:
+  pLambdaFunction: "aws-lambda-dev-lambdaFun"
+  pConnectInstanceArn: "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a"
+  pHoursOfOprationName: "ServerlessHour"
+  pQueueName: "test Serverless Queue"
+  pLexBotName: "testServerlessLexBot"
+  pLexBotAliasName : "TestBotAlias"
+  pLexbotAliasID: TSTALIASID
+  pRoutingProfileName: "Basic Serverless Routing"
+  pContactFlowName: "Serverless_abg_test_belusa_chatflow"

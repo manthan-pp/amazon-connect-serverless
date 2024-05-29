@@ -2,8 +2,8 @@ Resources:
   rHoursOfOperation:
     Type: "AWS::Connect::HoursOfOperation"
     Properties:
-      InstanceArn: arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a
-      Name: "ServerlessHour"
+      InstanceArn: ${file(config/resources/references.yml):parameters.pConnectInstanceArn}
+      Name: "${file(config/resources/references.yml):parameters.pHoursOfOprationName}"
       TimeZone: "America/New_York"
       Config:
         - Day: "SUNDAY"
@@ -47,7 +47,7 @@ Resources:
             Minutes: 0
           EndTime:
             Hours: 12
-            Minutes: 0                        
+            Minutes: 0
         - Day: "SATURDAY"
           StartTime:
             Hours: 12
