@@ -1,24 +1,16 @@
 service: amazon-connect-serverless
 frameworkVersion: "3"
-useDotenv: true
 
 provider:
   name: aws
   runtime: nodejs18.x
-  region: ${file(config/resources/references.yml):pRegion}
+  region: ${file(config/env/${self:provider.stage}.yml):environmentVariables.region}
   stage: ${opt:stage, 'dev'}
   stackName: ${self:provider.stage}-${self:service}
   endpointType: REGIONAL
 
-custom:
-  stage: ${self:provider.stage}
-  dotenv:
-    #path: config/env/.env.${self:provider.stage}
-    path: .env.${self:provider.stage}
-
 plugins:
 - serverless-plugin-resource-tagging
-- serverless-dotenv-plugin
 
 
 package:

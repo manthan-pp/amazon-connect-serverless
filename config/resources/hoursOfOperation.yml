@@ -2,8 +2,8 @@ Resources:
   rHoursOfOperation:
     Type: "AWS::Connect::HoursOfOperation"
     Properties:
-      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/resources/references.yml):pConnectInstanceID}"
-      Name: "${file(config/resources/references.yml):pCompany_profix}-${file(config/resources/references.yml):pHoursOfOprationName}"
+      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}"
+      Name: "${file(config/env/${self:provider.stage}.yml):environmentVariables.company_prefix}-${file(config/env/${self:provider.stage}.yml):environmentVariables.hoursofoperation_name}"
       TimeZone: "America/New_York"
       Config:
       - Day: "SUNDAY"

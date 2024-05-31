@@ -1,4 +1,19 @@
 environmentVariables:
   disconnect_time: 8
   idle_time: 2
-  instance_id: f6f46034-25c9-4bad-acad-3697484cb01a
+  connect_instance_id: 
+  lambda_function: "aws-lambda-dev-lambdaFun"
+  security_profile_id: 
+  Company_prefix: "jb"
+  hours_of_opration: "serverlessHour"
+  queue_name: "test_serverless_queue"
+  lexbot_name: "test_serverless_lexbot"
+  lexbot_alias_name: "testbot_alias"
+  lexbot_alias_id: ""
+  routing_profile_id: "basic_serverless_routing"
+  contact_flow_nmae: "serverless_abg_test_belusa_chatflow"
+  region: us-east-1
+  user_firstname: "Test"
+  user_lastname: "Serverless"
+  user_email_id: "serverlesstest@email.com"
+  user_name: testServerless
