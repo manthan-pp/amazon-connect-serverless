@@ -9,7 +9,7 @@ Resources:
       PhoneConfig:
         PhoneType: SOFT_PHONE
       Username: ${file(config/env/${self:provider.stage}.yml):environmentVariables.user_name}
-      Password: ${param:pUserPassword}
+      Password: ${param:user_password}
       InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}"
       RoutingProfileArn: !Ref rRoutingProfile
       SecurityProfileArns:
