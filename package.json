@@ -3,6 +3,8 @@
     "@aws-sdk/client-connect": "^3.572.0"
   },
   "devDependencies": {
-    "serverless-plugin-resource-tagging": "^1.2.0"
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-plugin-resource-tagging": "^1.2.0",
+    "serverless-plugin-split-stacks": "^1.13.0"
   }
 }

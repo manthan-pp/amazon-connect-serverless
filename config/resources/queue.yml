@@ -2,8 +2,8 @@ Resources:
   rQueue:
     Type: "AWS::Connect::Queue"
     Properties:
-      InstanceArn: arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a
+      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}"
       HoursOfOperationArn: !Ref rHoursOfOperation
-      Name: "test Serverless Queue"
+      Name: "${file(config/env/${self:provider.stage}.yml):environmentVariables.company_prefix}_${file(config/env/${self:provider.stage}.yml):environmentVariables.queue_name}"
       Description: "Queue for customer support"
       MaxContacts: 1

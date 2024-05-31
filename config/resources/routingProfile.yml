@@ -2,23 +2,23 @@ Resources:
   rRoutingProfile:
     Type: "AWS::Connect::RoutingProfile"
     Properties:
-      InstanceArn: arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a
-      Name: "Basic Serverless Routing"
+      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}"
+      Name: "${file(config/env/${self:provider.stage}.yml):environmentVariables.company_prefix}_${file(config/env/${self:provider.stage}.yml):environmentVariables.routing_profile_id}"
       Description: "Basic Routing Profile"
       DefaultOutboundQueueArn: !Ref rQueue
       MediaConcurrencies:
-        - Channel: VOICE
-          Concurrency: 1
-        - Channel: CHAT
-          Concurrency: 2
+      - Channel: VOICE
+        Concurrency: 1
+      - Channel: CHAT
+        Concurrency: 2
       QueueConfigs:
-        - Delay: 0
-          Priority: 1
-          QueueReference:
-            Channel: VOICE
-            QueueArn: !Ref rQueue
-        - Delay: 0
-          Priority: 1
-          QueueReference:
-            Channel: CHAT
-            QueueArn: !Ref rQueue
+      - Delay: 0
+        Priority: 1
+        QueueReference:
+          Channel: VOICE
+          QueueArn: !Ref rQueue
+      - Delay: 0
+        Priority: 1
+        QueueReference:
+          Channel: CHAT
+          QueueArn: !Ref rQueue

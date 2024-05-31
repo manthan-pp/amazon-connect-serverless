@@ -1,2 +1,3 @@
-deploy
-sls deploy --param="pLexbotalias=TSTALIASID" --param="pLambdaFunction=aws-lambda-dev-lambdaFun"
+# deploy
+
+sls deploy --stage dev --param="user_password=testServerless@123"

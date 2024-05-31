@@ -2,56 +2,56 @@ Resources:
   rHoursOfOperation:
     Type: "AWS::Connect::HoursOfOperation"
     Properties:
-      InstanceArn: arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a
-      Name: "ServerlessHour"
+      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}"
+      Name: "${file(config/env/${self:provider.stage}.yml):environmentVariables.company_prefix}-${file(config/env/${self:provider.stage}.yml):environmentVariables.hoursofoperation_name}"
       TimeZone: "America/New_York"
       Config:
-        - Day: "SUNDAY"
-          StartTime:
-            Hours: 12
-            Minutes: 0
-          EndTime:
-            Hours: 12
-            Minutes: 0
-        - Day: "MONDAY"
-          StartTime:
-            Hours: 12
-            Minutes: 0
-          EndTime:
-            Hours: 12
-            Minutes: 0
-        - Day: "TUESDAY"
-          StartTime:
-            Hours: 12
-            Minutes: 0
-          EndTime:
-            Hours: 12
-            Minutes: 0
-        - Day: "WEDNESDAY"
-          StartTime:
-            Hours: 12
-            Minutes: 0
-          EndTime:
-            Hours: 12
-            Minutes: 0
-        - Day: "THURSDAY"
-          StartTime:
-            Hours: 12
-            Minutes: 0
-          EndTime:
-            Hours: 12
-            Minutes: 0
-        - Day: "FRIDAY"
-          StartTime:
-            Hours: 12
-            Minutes: 0
-          EndTime:
-            Hours: 12
-            Minutes: 0                        
-        - Day: "SATURDAY"
-          StartTime:
-            Hours: 12
-            Minutes: 0
-          EndTime:
-            Hours: 12
-            Minutes: 0 
+      - Day: "SUNDAY"
+        StartTime:
+          Hours: 12
+          Minutes: 0
+        EndTime:
+          Hours: 12
+          Minutes: 0
+      - Day: "MONDAY"
+        StartTime:
+          Hours: 12
+          Minutes: 0
+        EndTime:
+          Hours: 12
+          Minutes: 0
+      - Day: "TUESDAY"
+        StartTime:
+          Hours: 12
+          Minutes: 0
+        EndTime:
+          Hours: 12
+          Minutes: 0
+      - Day: "WEDNESDAY"
+        StartTime:
+          Hours: 12
+          Minutes: 0
+        EndTime:
+          Hours: 12
+          Minutes: 0
+      - Day: "THURSDAY"
+        StartTime:
+          Hours: 12
+          Minutes: 0
+        EndTime:
+          Hours: 12
+          Minutes: 0
+      - Day: "FRIDAY"
+        StartTime:
+          Hours: 12
+          Minutes: 0
+        EndTime:
+          Hours: 12
+          Minutes: 0
+      - Day: "SATURDAY"
+        StartTime:
+          Hours: 12
+          Minutes: 0
+        EndTime:
+          Hours: 12
+          Minutes: 0
