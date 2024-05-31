@@ -256,12 +256,12 @@
 				},
 				"parameters": {
 					"HoursOfOperationId": {
-						"displayName": "${file(config/resources/references.yml):parameters.pHoursOfOprationName}"
+						"displayName": "${file(config/resources/references.yml):pHoursOfOprationName}"
 					}
 				},
 				"Hours": {
 					"id": "${rHoursOfOperation}",
-					"text": "${file(config/resources/references.yml):parameters.pHoursOfOprationName}"
+					"text": "${file(config/resources/references.yml):pHoursOfOprationName}"
 				}
 			},
 			"a83fded9-68f3-473c-9445-b05282ccbaae": {
@@ -271,12 +271,12 @@
 				},
 				"parameters": {
 					"HoursOfOperationId": {
-						"displayName": "${file(config/resources/references.yml):parameters.pHoursOfOprationName}"
+						"displayName": "${file(config/resources/references.yml):pHoursOfOprationName}"
 					}
 				},
 				"Hours": {
 					"id": "${rHoursOfOperation}",
-					"text": "${file(config/resources/references.yml):parameters.pHoursOfOprationName}"
+					"text": "${file(config/resources/references.yml):pHoursOfOprationName}"
 				}
 			},
 			"13f4d9a9-1b5e-4749-8853-1dbb26309d10": {
@@ -329,9 +329,9 @@
 				"parameters": {
 					"LexV2Bot": {
 						"AliasArn": {
-							"displayName": "${file(config/resources/references.yml):parameters.pLexBotAliasName}",
+							"displayName": "${file(config/resources/references.yml):pLexBotAliasName}",
 							"useLexBotDropdown": true,
-							"lexV2BotName": "${file(config/resources/references.yml):parameters.pLexBotName}"
+							"lexV2BotName": "${file(config/resources/references.yml):pLexBotName}"
 						}
 					},
 					"LexSessionAttributes": {
@@ -344,8 +344,8 @@
 					"session_customer_email": true
 				},
 				"useLexBotDropdown": true,
-				"lexV2BotName": "${file(config/resources/references.yml):parameters.pLexBotName}",
-				"lexV2BotAliasName": "${file(config/resources/references.yml):parameters.pLexBotAliasName}",
+				"lexV2BotName": "${file(config/resources/references.yml):pLexBotName}",
+				"lexV2BotAliasName": "${file(config/resources/references.yml):pLexBotAliasName}",
 				"conditionMetadata": [
 					{
 						"id": "eaaa1fc4-7b04-4c4d-83ac-bb5e9978eaee",
@@ -374,11 +374,11 @@
 				},
 				"parameters": {
 					"QueueId": {
-						"displayName": "${file(config/resources/references.yml):parameters.pQueueName}"
+						"displayName": "${file(config/resources/references.yml):pQueueName}"
 					}
 				},
 				"queue": {
-					"text": "${file(config/resources/references.yml):parameters.pQueueName}"
+					"text": "${file(config/resources/references.yml):pQueueName}"
 				}
 			},
 			"3e4a3ffd-9da0-4cf7-9aff-68d5dfc38fdb": {
@@ -388,11 +388,11 @@
 				},
 				"parameters": {
 					"QueueId": {
-						"displayName": "${file(config/resources/references.yml):parameters.pQueueName}"
+						"displayName": "${file(config/resources/references.yml):pQueueName}"
 					}
 				},
 				"queue": {
-					"text": "${file(config/resources/references.yml):parameters.pQueueName}"
+					"text": "${file(config/resources/references.yml):pQueueName}"
 				}
 			},
 			"148c95d7-c4f5-4a36-85f0-d279bc75320d": {
@@ -408,7 +408,7 @@
 				},
 				"parameters": {
 					"LambdaFunctionARN": {
-						"displayName": "${file(config/resources/references.yml):parameters.pLambdaFunction}"
+						"displayName": "${file(config/resources/references.yml):pLambdaFunction}"
 					},
 					"LambdaInvocationAttributes": {
 						"contactId": {
@@ -422,7 +422,7 @@
 			}
 		},
 		"Annotations": [],
-		"name": "${file(config/resources/references.yml):parameters.pContactFlowName}",
+		"name": "${file(config/resources/references.yml):pContactFlowName}",
 		"description": "Simple flow using Serverless",
 		"type": "contactFlow",
 		"status": "PUBLISHED",
@@ -1087,7 +1087,7 @@
 			"Parameters": {
 				"Text": "Welcome to $.Attributes.INSTANCE_DISPLAY_VALUE chat bot.",
 				"LexV2Bot": {
-					"AliasArn": "arn:aws:lex:${AWS::Region}:${AWS::AccountId}:bot-alias/${rAWSLexBot}/${file(config/resources/references.yml):parameters.pLexbotAliasID}"
+					"AliasArn": "arn:aws:lex:${AWS::Region}:${AWS::AccountId}:bot-alias/${rAWSLexBot}/${file(config/resources/references.yml):pLexbotAliasID}"
 				},
 				"LexSessionAttributes": {
 					"session_customer_email": "$.Attributes.CUSTOM_CUSTOMER_EMAIL"
@@ -1179,7 +1179,7 @@
 		},
 		{
 			"Parameters": {
-				"LambdaFunctionARN": "arn:aws:lambda::${AWS::Region}:${AWS::AccountId}:function:${file(config/resources/references.yml):parameters.pLambdaFunction}",
+				"LambdaFunctionARN": "arn:aws:lambda::${AWS::Region}:${AWS::AccountId}:function:${file(config/resources/references.yml):pLambdaFunction}",
 				"InvocationTimeLimitSeconds": "8",
 				"LambdaInvocationAttributes": {
 					"contactId": "$.ContactId"

@@ -2,8 +2,8 @@ Resources:
   rQueue:
     Type: "AWS::Connect::Queue"
     Properties:
-      InstanceArn: ${file(config/resources/references.yml):parameters.pConnectInstanceArn}
+      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/resources/references.yml):pConnectInstanceID}"
       HoursOfOperationArn: !Ref rHoursOfOperation
-      Name: "${file(config/resources/references.yml):parameters.pQueueName}"
+      Name: "${file(config/resources/references.yml):pCompany_profix}_${file(config/resources/references.yml):pQueueName}"
       Description: "Queue for customer support"
       MaxContacts: 1

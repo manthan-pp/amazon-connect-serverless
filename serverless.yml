@@ -1,28 +1,39 @@
 service: amazon-connect-serverless
 frameworkVersion: "3"
+useDotenv: true
 
 provider:
   name: aws
   runtime: nodejs18.x
-  region: us-east-1
-  stage: ${opt:stage,"dev"}
-  stackName: ${sls:stage}-${self:service}
+  region: ${file(config/resources/references.yml):pRegion}
+  stage: ${opt:stage, 'dev'}
+  stackName: ${self:provider.stage}-${self:service}
   endpointType: REGIONAL
+
+custom:
+  stage: ${self:provider.stage}
+  dotenv:
+    #path: config/env/.env.${self:provider.stage}
+    path: .env.${self:provider.stage}
+
+plugins:
+- serverless-plugin-resource-tagging
+- serverless-dotenv-plugin
+
 
 package:
   individually: true
 
-plugins:
-  - serverless-plugin-resource-tagging
-
 functions:
-  - ${file(config/function/integration.yml)}
+- ${file(config/function/integration.yml)}
 
 resources:
-  - ${file(config/resources/hoursOfOperation.yml)}
-  - ${file(config/resources/queue.yml)}
-  - ${file(config/resources/routingProfile.yml)}
-  - ${file(config/resources/user.yml)}
-  - ${file(config/resources/lexBot.yml)}
-  - ${file(config/resources/botVersion.yml)}
-  - ${file(config/resources/contactFlow.yml)}
+- ${file(config/resources/hoursOfOperation.yml)}
+- ${file(config/resources/queue.yml)}
+- ${file(config/resources/routingProfile.yml)}
+- ${file(config/resources/user.yml)}
+- ${file(config/resources/lexBot.yml)}
+- ${file(config/resources/botVersion.yml)}
+- ${file(config/resources/contactFlow.yml)}
+
+

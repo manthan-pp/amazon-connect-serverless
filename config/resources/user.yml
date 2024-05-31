@@ -3,13 +3,14 @@ Resources:
     Type: "AWS::Connect::User"
     Properties:
       IdentityInfo:
-        FirstName: Test
-        LastName: Serverless
-        Email: 'serverlesstest@email.com'
-      PhoneConfig: 
+        FirstName: ${file(config/resources/references.yml):pUserFirstName}
+        LastName: ${file(config/resources/references.yml):PUserLastName}
+        Email: '${file(config/resources/references.yml):pUserEmailID}'
+      PhoneConfig:
         PhoneType: SOFT_PHONE
-      Username: testServerless
-      Password: testServerless@123
-      InstanceArn: ${file(config/resources/references.yml):parameters.pConnectInstanceArn}
+      Username: ${file(config/resources/references.yml):pUserName}
+      Password: ${param:pUserPassword}
+      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/resources/references.yml):pConnectInstanceID}"
       RoutingProfileArn: !Ref rRoutingProfile
-      SecurityProfileArns: [arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/security-profile/78ec6f05-a689-4556-8702-08acf910fbe6]
+      SecurityProfileArns:
+      - !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/resources/references.yml):pConnectInstanceID}/security-profile/${file(config/resources/references.yml):pSecurityProfileID}"
