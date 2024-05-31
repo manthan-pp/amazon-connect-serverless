@@ -2,7 +2,7 @@ Resources:
   rAWSLexBot:
     Type: AWS::Lex::Bot
     Properties:
-      Name: "${file(config/resources/references.yml):pCompany_profix}_${file(config/resources/references.yml):pLexBotName}"
+      Name: "${file(config/env/${self:provider.stage}.yml):environmentVariables.company_prefix}_${file(config/env/${self:provider.stage}.yml):environmentVariables.lexbot_name}"
       RoleArn: arn:aws:iam::767252029631:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_serverless_lexbot
       DataPrivacy:
         ChildDirected: false

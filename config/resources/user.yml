@@ -3,14 +3,14 @@ Resources:
     Type: "AWS::Connect::User"
     Properties:
       IdentityInfo:
-        FirstName: ${file(config/resources/references.yml):pUserFirstName}
-        LastName: ${file(config/resources/references.yml):PUserLastName}
-        Email: '${file(config/resources/references.yml):pUserEmailID}'
+        FirstName: ${file(config/env/${self:provider.stage}.yml):environmentVariables.user_firstname}
+        LastName: ${file(config/env/${self:provider.stage}.yml):environmentVariables.user_lastname}
+        Email: '${file(config/env/${self:provider.stage}.yml):environmentVariables.user_email_id}'
       PhoneConfig:
         PhoneType: SOFT_PHONE
-      Username: ${file(config/resources/references.yml):pUserName}
+      Username: ${file(config/env/${self:provider.stage}.yml):environmentVariables.user_name}
       Password: ${param:pUserPassword}
-      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/resources/references.yml):pConnectInstanceID}"
+      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}"
       RoutingProfileArn: !Ref rRoutingProfile
       SecurityProfileArns:
-      - !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/resources/references.yml):pConnectInstanceID}/security-profile/${file(config/resources/references.yml):pSecurityProfileID}"
+      - !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}/security-profile/${file(config/env/${self:provider.stage}.yml):environmentVariables.security_profile_id}"

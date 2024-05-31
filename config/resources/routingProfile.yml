@@ -2,8 +2,8 @@ Resources:
   rRoutingProfile:
     Type: "AWS::Connect::RoutingProfile"
     Properties:
-      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/resources/references.yml):pConnectInstanceID}"
-      Name: "${file(config/resources/references.yml):pCompany_profix}_${file(config/resources/references.yml):pRoutingProfileName}"
+      InstanceArn: !Sub "arn:aws:connect:${AWS::Region}:${AWS::AccountId}:instance/${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}"
+      Name: "${file(config/env/${self:provider.stage}.yml):environmentVariables.company_prefix}_${file(config/env/${self:provider.stage}.yml):environmentVariables.routing_profile_id}"
       Description: "Basic Routing Profile"
       DefaultOutboundQueueArn: !Ref rQueue
       MediaConcurrencies:

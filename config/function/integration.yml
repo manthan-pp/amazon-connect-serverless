@@ -6,4 +6,4 @@ chat-idle-participant:
   environment:
     disconnect_time: ${file(config/env/${self:provider.stage}.yml):environmentVariables.disconnect_time}
     idle_time: ${file(config/env/${self:provider.stage}.yml):environmentVariables.idle_time}
-    instance_id: ${file(config/env/${self:provider.stage}.yml):environmentVariables.instance_id}
+    instance_id: ${file(config/env/${self:provider.stage}.yml):environmentVariables.connect_instance_id}
