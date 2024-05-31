@@ -2,7 +2,7 @@ Resources:
   rAWSLexBot:
     Type: AWS::Lex::Bot
     Properties:
-      Name: testServerlessLexBot
+      Name: "${file(config/resources/references.yml):pCompany_profix}_${file(config/resources/references.yml):pLexBotName}"
       RoleArn: arn:aws:iam::767252029631:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_serverless_lexbot
       DataPrivacy:
         ChildDirected: false
@@ -10,68 +10,68 @@ Resources:
       Description: Lex bot using serverlessUser
       AutoBuildBotLocales: false
       BotLocales:
-        - LocaleId: "en_US"
-          Description: "Customer Email"
-          NluConfidenceThreshold: 0.40
-          VoiceSettings:
-            VoiceId: "Ivy"
-          SlotTypes:
-            - Name: "CustomerEmail"
-              Description: "Slot Type description"
-              SlotTypeValues:
-                - SampleValue:
-                    Value: CustomerEmail
-              ValueSelectionSetting:
-                ResolutionStrategy: ORIGINAL_VALUE
-          Intents:
-            - Name: "WelcomeIntent"
-              SampleUtterances:
-                - Utterance: "Hi"
-                - Utterance: "hello"
-                - Utterance: "help"
-                - Utterance: "need help"
-            - Name: "SalesIntent"
-              SampleUtterances:
-                - Utterance: "sales"
-                - Utterance: "sale"
-                - Utterance: "sales person"
-                - Utterance: "sales agent"
-              SlotPriorities:
-                - Priority: 1
-                  SlotName: "CustomerEmail"
-              Slots:
-                - Name: "CustomerEmail"
-                  SlotTypeName: "AMAZON.EmailAddress"
-                  ValueElicitationSetting:
-                    SlotConstraint: "Required"
-                    PromptSpecification:
-                      MessageGroupsList:
-                        - Message:
-                            PlainTextMessage:
-                              Value: "Please enter email: "
-                      MaxRetries: 4
-                      AllowInterrupt: true
-            - Name: "CustomerServiceIntent"
-              SampleUtterances:
-                - Utterance: "Customer Service"
-                - Utterance: "customer service"
-                - Utterance: "service"
-                - Utterance: "issue with product"
-              SlotPriorities:
-                - Priority: 1
-                  SlotName: "CustomerEmail"
-              Slots:
-                - Name: "CustomerEmail"
-                  SlotTypeName: "AMAZON.EmailAddress"
-                  ValueElicitationSetting:
-                    SlotConstraint: "Required"
-                    PromptSpecification:
-                      MessageGroupsList:
-                        - Message:
-                            PlainTextMessage:
-                              Value: "Please enter email: "
-                      MaxRetries: 4
-                      AllowInterrupt: true
-            - Name: "FallbackIntent"
-              Description: "Default intent when no other intent matches"
-              ParentIntentSignature: "AMAZON.FallbackIntent"
+      - LocaleId: "en_US"
+        Description: "Customer Email"
+        NluConfidenceThreshold: 0.40
+        VoiceSettings:
+          VoiceId: "Ivy"
+        SlotTypes:
+        - Name: "CustomerEmail"
+          Description: "Slot Type description"
+          SlotTypeValues:
+          - SampleValue:
+              Value: CustomerEmail
+          ValueSelectionSetting:
+            ResolutionStrategy: ORIGINAL_VALUE
+        Intents:
+        - Name: "WelcomeIntent"
+          SampleUtterances:
+          - Utterance: "Hi"
+          - Utterance: "hello"
+          - Utterance: "help"
+          - Utterance: "need help"
+        - Name: "SalesIntent"
+          SampleUtterances:
+          - Utterance: "sales"
+          - Utterance: "sale"
+          - Utterance: "sales person"
+          - Utterance: "sales agent"
+          SlotPriorities:
+          - Priority: 1
+            SlotName: "CustomerEmail"
+          Slots:
+          - Name: "CustomerEmail"
+            SlotTypeName: "AMAZON.EmailAddress"
+            ValueElicitationSetting:
+              SlotConstraint: "Required"
+              PromptSpecification:
+                MessageGroupsList:
+                - Message:
+                    PlainTextMessage:
+                      Value: "Please enter email: "
+                MaxRetries: 4
+                AllowInterrupt: true
+        - Name: "CustomerServiceIntent"
+          SampleUtterances:
+          - Utterance: "Customer Service"
+          - Utterance: "customer service"
+          - Utterance: "service"
+          - Utterance: "issue with product"
+          SlotPriorities:
+          - Priority: 1
+            SlotName: "CustomerEmail"
+          Slots:
+          - Name: "CustomerEmail"
+            SlotTypeName: "AMAZON.EmailAddress"
+            ValueElicitationSetting:
+              SlotConstraint: "Required"
+              PromptSpecification:
+                MessageGroupsList:
+                - Message:
+                    PlainTextMessage:
+                      Value: "Please enter email: "
+                MaxRetries: 4
+                AllowInterrupt: true
+        - Name: "FallbackIntent"
+          Description: "Default intent when no other intent matches"
+          ParentIntentSignature: "AMAZON.FallbackIntent"

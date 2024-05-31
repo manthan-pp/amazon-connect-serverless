@@ -1,0 +1,17 @@
+pLambdaFunction: "aws-lambda-dev-lambdaFun"
+#pConnectInstanceID: "config/env/${env:instance_id}"
+pConnectInstanceID: ${env:instance_id}
+pSecurityProfileID: ${env:security_profile_id}
+pCompany_profix: "Digi"
+pHoursOfOprationName: "ServerlessHour"
+pQueueName: "test_Serverless_Queue"
+pLexBotName: "test_Serverless_LexBot"
+pLexBotAliasName: "TestBot_Alias"
+pLexbotAliasID: "TSTALIASID"
+pRoutingProfileName: "Basic_Serverless_Routing"
+pContactFlowName: "Serverless_abg_test_belusa_chatflow"
+pRegion: ${env:region}
+pUserFirstName: "Test"
+PUserLastName: "Serverless"
+pUserEmailID: "serverlesstest@email.com"
+pUserName: testServerless

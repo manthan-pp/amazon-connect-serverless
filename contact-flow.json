@@ -256,12 +256,12 @@
 				},
 				"parameters": {
 					"HoursOfOperationId": {
-						"displayName": "ServerlessHour"
+						"displayName": "${file(config/resources/references.yml):pHoursOfOprationName}"
 					}
 				},
 				"Hours": {
-					"id": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/99fea1d4-b787-40b6-9045-7e55e21049fd",
-					"text": "ServerlessHour"
+					"id": "${rHoursOfOperation}",
+					"text": "${file(config/resources/references.yml):pHoursOfOprationName}"
 				}
 			},
 			"a83fded9-68f3-473c-9445-b05282ccbaae": {
@@ -271,12 +271,12 @@
 				},
 				"parameters": {
 					"HoursOfOperationId": {
-						"displayName": "ServerlessHour"
+						"displayName": "${file(config/resources/references.yml):pHoursOfOprationName}"
 					}
 				},
 				"Hours": {
-					"id": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/99fea1d4-b787-40b6-9045-7e55e21049fd",
-					"text": "ServerlessHour"
+					"id": "${rHoursOfOperation}",
+					"text": "${file(config/resources/references.yml):pHoursOfOprationName}"
 				}
 			},
 			"13f4d9a9-1b5e-4749-8853-1dbb26309d10": {
@@ -329,9 +329,9 @@
 				"parameters": {
 					"LexV2Bot": {
 						"AliasArn": {
-							"displayName": "TestBotAlias",
+							"displayName": "${file(config/resources/references.yml):pLexBotAliasName}",
 							"useLexBotDropdown": true,
-							"lexV2BotName": "ServerlessBot"
+							"lexV2BotName": "${file(config/resources/references.yml):pLexBotName}"
 						}
 					},
 					"LexSessionAttributes": {
@@ -344,8 +344,8 @@
 					"session_customer_email": true
 				},
 				"useLexBotDropdown": true,
-				"lexV2BotName": "ServerlessBot",
-				"lexV2BotAliasName": "TestBotAlias",
+				"lexV2BotName": "${file(config/resources/references.yml):pLexBotName}",
+				"lexV2BotAliasName": "${file(config/resources/references.yml):pLexBotAliasName}",
 				"conditionMetadata": [
 					{
 						"id": "eaaa1fc4-7b04-4c4d-83ac-bb5e9978eaee",
@@ -374,11 +374,11 @@
 				},
 				"parameters": {
 					"QueueId": {
-						"displayName": "test Serverless Queue"
+						"displayName": "${file(config/resources/references.yml):pQueueName}"
 					}
 				},
 				"queue": {
-					"text": "test Serverless Queue"
+					"text": "${file(config/resources/references.yml):pQueueName}"
 				}
 			},
 			"3e4a3ffd-9da0-4cf7-9aff-68d5dfc38fdb": {
@@ -388,11 +388,11 @@
 				},
 				"parameters": {
 					"QueueId": {
-						"displayName": "test Serverless Queue"
+						"displayName": "${file(config/resources/references.yml):pQueueName}"
 					}
 				},
 				"queue": {
-					"text": "test Serverless Queue"
+					"text": "${file(config/resources/references.yml):pQueueName}"
 				}
 			},
 			"148c95d7-c4f5-4a36-85f0-d279bc75320d": {
@@ -408,7 +408,7 @@
 				},
 				"parameters": {
 					"LambdaFunctionARN": {
-						"displayName": "aws-lambda-dev-lambdaFun"
+						"displayName": "${file(config/resources/references.yml):pLambdaFunction}"
 					},
 					"LambdaInvocationAttributes": {
 						"contactId": {
@@ -422,7 +422,7 @@
 			}
 		},
 		"Annotations": [],
-		"name": "abg_test_Serverless_belusa_chatflow",
+		"name": "${file(config/resources/references.yml):pContactFlowName}",
 		"description": "Simple flow using Serverless",
 		"type": "contactFlow",
 		"status": "PUBLISHED",
@@ -953,7 +953,7 @@
 		},
 		{
 			"Parameters": {
-				"HoursOfOperationId": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/99fea1d4-b787-40b6-9045-7e55e21049fd"
+				"HoursOfOperationId": "${rHoursOfOperation}"
 			},
 			"Identifier": "af9bf216-081c-4129-a057-ec0f0ad3b2d6",
 			"Type": "CheckHoursOfOperation",
@@ -989,7 +989,7 @@
 		},
 		{
 			"Parameters": {
-				"HoursOfOperationId": "arn:aws:connect:us-east-1:767252029631:instance/f6f46034-25c9-4bad-acad-3697484cb01a/operating-hours/99fea1d4-b787-40b6-9045-7e55e21049fd"
+				"HoursOfOperationId": "${rHoursOfOperation}"
 			},
 			"Identifier": "a83fded9-68f3-473c-9445-b05282ccbaae",
 			"Type": "CheckHoursOfOperation",
@@ -1087,7 +1087,7 @@
 			"Parameters": {
 				"Text": "Welcome to $.Attributes.INSTANCE_DISPLAY_VALUE chat bot.",
 				"LexV2Bot": {
-					"AliasArn": "arn:aws:lex:us-east-1:767252029631:bot-alias/UCGRJIW8OS/TSTALIASID"
+					"AliasArn": "arn:aws:lex:${AWS::Region}:${AWS::AccountId}:bot-alias/${rAWSLexBot}/${file(config/resources/references.yml):pLexbotAliasID}"
 				},
 				"LexSessionAttributes": {
 					"session_customer_email": "$.Attributes.CUSTOM_CUSTOMER_EMAIL"
@@ -1131,7 +1131,7 @@
 		},
 		{
 			"Parameters": {
-				"QueueId": "$.Queue.ARN"
+				"QueueId": "${rQueue}"
 			},
 			"Identifier": "31b81fa0-1cfb-4968-af29-c5d41e37274e",
 			"Type": "UpdateContactTargetQueue",
@@ -1147,7 +1147,7 @@
 		},
 		{
 			"Parameters": {
-				"QueueId": "$.Queue.ARN"
+				"QueueId": "${rQueue}"
 			},
 			"Identifier": "3e4a3ffd-9da0-4cf7-9aff-68d5dfc38fdb",
 			"Type": "UpdateContactTargetQueue",
@@ -1179,7 +1179,7 @@
 		},
 		{
 			"Parameters": {
-				"LambdaFunctionARN": "arn:aws:lambda:us-east-1:767252029631:function:aws-lambda-dev-lambdaFun",
+				"LambdaFunctionARN": "arn:aws:lambda::${AWS::Region}:${AWS::AccountId}:function:${file(config/resources/references.yml):pLambdaFunction}",
 				"InvocationTimeLimitSeconds": "8",
 				"LambdaInvocationAttributes": {
 					"contactId": "$.ContactId"
